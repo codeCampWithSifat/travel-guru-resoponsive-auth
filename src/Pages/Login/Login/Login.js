@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import SocialLogin from "../SocialLogin/SocialLogin";
 
 const Login = () => {
   return (
@@ -31,6 +32,8 @@ const Login = () => {
         </button>
       </form>
       <p className="mt-3 ">New On Travel Gure <Link to="/register">Please Register</Link></p>
+      <button type="button" className="btn btn-link text-danger">Reset Your Password</button>
+      <SocialLogin />
     </div>
   );
 };

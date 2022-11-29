@@ -1,11 +1,16 @@
-import React from 'react'
+import React from "react";
 
 const Loading = () => {
   return (
-    <div>
-      <h2>this is loading component</h2>
-    </div>
-  )
-}
+    <button className="btn btn-primary" type="button" disabled>
+      <span
+        className="spinner-border spinner-border-sm"
+        role="status"
+        aria-hidden="true"
+      ></span>
+      Loading...
+    </button>
+  );
+};
 
-export default Loading
+export default Loading;

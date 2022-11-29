@@ -13,7 +13,7 @@ const Jungles = () => {
   return (
     <div className="container mt-5">
       <br />
-      <div class="row row-cols-1 row-cols-md-2 g-4">
+      <div className="row row-cols-1 row-cols-md-2 g-4">
         {
           jungles.map(jungle => <Jungle key={jungle.id} jungle={jungle}></Jungle>)
         }

@@ -5,7 +5,7 @@ const Footer = () => {
   return (
     <div style={{backgroundColor:"#5A00DD"}}>
       <div className="container text-white" style={{ marginTop: "6rem" }}>
-        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+        <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
           <div>
             <h2>Travel Guru</h2>
             <p> Level-4, 34, Awal Centre, Banani, Dhaka</p>

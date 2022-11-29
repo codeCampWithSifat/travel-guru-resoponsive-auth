@@ -14,7 +14,7 @@ const Destination = () => {
         <Link to="/others">Others</Link>
       </div>
 
-      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4 mt-4 mb-4">
+      <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4 mt-4 mb-4">
         <Link to="/jungles">
           <div>
             <img src={jungle1} className="w-100" alt="" />
