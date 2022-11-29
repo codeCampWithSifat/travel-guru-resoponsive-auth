@@ -8,7 +8,6 @@ const Others = () => {
     .then(res => res.json())
     .then(data => {
       setOthers(data)
-      console.log(data);
     })
   },[])
   return (

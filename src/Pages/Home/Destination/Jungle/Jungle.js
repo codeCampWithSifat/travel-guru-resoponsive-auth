@@ -1,7 +1,6 @@
 import React from "react";
 
 const Jungle = ({ jungle }) => {
-  console.log(jungle);
   const {image, description, name} = jungle;
   return (
     <div>

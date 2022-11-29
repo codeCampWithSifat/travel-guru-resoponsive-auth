@@ -1,40 +1,60 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import SocialLogin from "../SocialLogin/SocialLogin";
-import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
+import {
+  useCreateUserWithEmailAndPassword,
+  useUpdateProfile,
+} from "react-firebase-hooks/auth";
 import auth from "../../../firebase.init";
 import Loading from "../../Shared/Loading/Loading";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Register = () => {
   const [createUserWithEmailAndPassword, user, loading, error] =
-    useCreateUserWithEmailAndPassword(auth);
-    const [passwordError, setPasswordError] = useState("")
-    const navigate = useNavigate();
-   
-    let errorElement;
-    if (error) {
-      errorElement = <p>{error?.message}</p>
-    }
-    if (loading) {
-      return <Loading />
-    }
-    if (user) {
-      navigate("/home")
-    }
+    useCreateUserWithEmailAndPassword(auth, {sendEmailVerification:true});
+  const [updateProfile, updating] = useUpdateProfile(auth);
+  const [checkBox, setCheckBox] = useState(false);
 
-  const handleRegistration = (e) => {
+  const [passwordError, setPasswordError] = useState("");
+  const navigate = useNavigate();
+
+  let errorElement;
+  if (error) {
+    errorElement = <p>{error?.message}</p>;
+  }
+  if (loading) {
+    return <Loading />;
+  }
+  if (user) {
+    navigate("/home");
+    console.log(user);
+  }
+  if (updating) {
+    return <p>Updating...</p>;
+  }
+
+  const handleRegistration = async(e) => {
     e.preventDefault();
     const name = e.target.name.value;
     const email = e.target.email.value;
     const password = e.target.password.value;
     const password2 = e.target.password2.value;
 
-    if(password !== password2) {
-      setPasswordError("Your Password Not Matched")
-      return
-    }
 
-    createUserWithEmailAndPassword(email, password)
+    if (password !== password2) {
+      setPasswordError("Your Password Not Matched");
+      return;
+    }
+    if (password.length < 6) {
+      setPasswordError("Password Must Be At Least 6 Or More Characters");
+      return;
+    }
+    
+
+    await createUserWithEmailAndPassword(email, password);
+    await updateProfile({ displayName: name });
+    toast("Check Your Email Or Spam Box To Verify Your Email");
   };
   return (
     <div className="container w-50 mx-auto" style={{ marginTop: "6rem" }}>
@@ -84,10 +104,11 @@ const Register = () => {
             required
           />
         </div>
-         <h4 className="text-danger mt-2">{passwordError}</h4>
+        <h4 className="text-danger mt-2">{passwordError}</h4>
         <div className="mb-3 form-check">
           <input
             type="checkbox"
+            onClick={() => setCheckBox(!checkBox)}
             name="checked"
             className="form-check-input"
             id="exampleCheck1"
@@ -98,7 +119,11 @@ const Register = () => {
           </label>
         </div>
         <p className="text-danger">{errorElement}</p>
-        <button type="submit" className="btn btn-primary w-100">
+        <button
+          disabled={!checkBox}
+          type="submit"
+          className="btn btn-primary w-100"
+        >
           Register
         </button>
 
@@ -107,6 +132,7 @@ const Register = () => {
         </p>
       </form>
       <SocialLogin />
+      <ToastContainer />
     </div>
   );
 };
