@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "name": "Buddist Temple",
+    "description": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is ",
+    "image": "https://i.ibb.co/GMbDMM0/heritage4.jpg"
+  },
+  {
+    "id": 2,
+    "name": "Buddist Temple",
+    "description": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is ",
+    "image": "https://i.ibb.co/BsYh4sz/heritage3.jpg"
+  },
+  {
+    "id": 3,
+    "name": "Buddist Temple",
+    "description": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is ",
+    "image": "https://i.ibb.co/1nQN4tp/heritage2.jpg"
+  },
+  {
+    "id": 4,
+    "name": "Buddist Temple",
+    "description": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is ",
+    "image": "https://i.ibb.co/RCn09Hj/heritage1.jpg"
+  }
+]
